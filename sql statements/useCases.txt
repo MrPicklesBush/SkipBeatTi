@@ -1,0 +1,43 @@
+User Account:
+display friends
+display all comments (and songs it was commented on) - sort by publish date
+create acct
+edit acct
+delete acct?
+
+Song: 
+display all comments (formatted like yt comments?)
+display avg rating
+
+Comments:
+add comment on song 
+edit?
+delete?
+
+Rating:
+rate song (add)
+edit?
+delete?
+
+Playist:
+display all songs
+Sort by custom,date added,title,artist,album,duration
+count total songs
+count total duration
+Only friends can edit collaborative playlists
+add song
+delete song
+
+Searching: 
+filter by song,album,artist,genre,release date
+-- sort by alphetically OR most streams (most relevant)
+
+Artist:
+display all songs
+display all albums
+display avg rating
+
+
+
+Questions:
+Friend or follower???? for collab playlists (rn for spotify neither...kinda like activity wall)
