@@ -1,5 +1,6 @@
 import React from 'react';
-import './Artists.css';  
+import '../App.css';  
+import { ShuffleIcon, MoreOptionsIcon } from './icons';
 
 function Artists() {
     const songs = [
@@ -55,11 +56,13 @@ function Artists() {
                     <button className="play-button">
                         <span className="play-icon">▶</span>
                     </button>
-                    <button className="shuffle-button">
-                        <span className="shuffle-icon">↔</span>
+                    <button className="shuffle">
+                        <ShuffleIcon />
                     </button>
                     <button className="follow-button">Follow</button>
-                    <button className="more-options">•••</button>
+                    <button className="more-options">
+                        <MoreOptionsIcon />
+                    </button>
                 </div>
                     <div className="popular-songs">
                         <h2>Popular</h2>
