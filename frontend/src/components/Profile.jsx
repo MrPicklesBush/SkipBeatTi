@@ -74,7 +74,6 @@ const Profile = () => {
           <h2>Top tracks this month</h2>
           <span className="visibility-text">Only visible to you</span>
         </div>
-        <button className="show-all">Show all</button>
       </div>
 
       <div className="controls">

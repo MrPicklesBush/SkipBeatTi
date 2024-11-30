@@ -328,3 +328,68 @@
   color: #b3b3b3;
   font-size: 14px;
 }
+
+/* Homepage.css */
+.homepage {
+  background-color: #121212;
+  color: white;
+  padding: 20px;
+}
+
+.homepage h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.album-card {
+  background: #181818;
+  padding: 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.album-card:hover {
+  background: #282828;
+  cursor: pointer;
+}
+
+.album-image img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.album-info h3 {
+  font-size: 16px;
+  margin: 0 0 8px 0;
+  color: #ffffff;
+}
+
+.album-info p {
+  font-size: 14px;
+  color: #b3b3b3;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .album-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .album-grid {
+    grid-template-columns: 1fr;
+  }
+}
