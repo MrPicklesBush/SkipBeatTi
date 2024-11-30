@@ -198,3 +198,133 @@
 .shuffle:hover, .more-options:hover, .follow-button:hover {
   color: white;
 }
+
+/* Profile.css */
+.profile-page {
+  background-color: #121212;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.profile-header {
+  margin-bottom: 40px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-stats {
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.content-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.section-header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.section-header h2 {
+  margin-bottom: 5px;  /* Adjust as needed */
+}
+
+.visibility-text {
+  color: #b3b3b3;
+  font-size: 13px;
+  display: block;
+}
+
+.show-all {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  cursor: pointer;
+}
+
+.tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.track-item {
+  display: grid;
+  grid-template-columns: 30px 60px 1fr 200px;
+  align-items: center;
+  gap: 16px;
+  padding: 8px;
+}
+
+.track-number {
+  color: #b3b3b3;
+}
+
+.track-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-artist {
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.track-album {
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.artist-card {
+  text-align: center;
+}
+
+.artist-image {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.artist-card h4 {
+  margin: 8px 0 4px;
+}
+
+.artist-card span {
+  color: #b3b3b3;
+  font-size: 14px;
+}

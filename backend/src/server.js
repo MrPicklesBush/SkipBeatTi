@@ -2,6 +2,8 @@ import express from "express"
 import dotenv from "dotenv"
 import mysql from "mysql"
 import path from "path"
+import { join } from 'path';
+
 
 // import albumRoutes from "./routes/album.route.js"
 // import playlistRoutes from "./routes/playlist.route.js"
@@ -9,7 +11,8 @@ import path from "path"
 dotenv.config();
 
 const app = express();
-app. use(express.static(path.join(__dirname, 'build')))
+// app. use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(join(import.meta.dirname, 'build')));
 app. use(express.json())
 const PORT = process.env.PORT;
 
