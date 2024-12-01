@@ -1,4 +1,3 @@
-// Profile.jsx
 import React from "react";
 import { ShuffleIcon, MoreOptionsIcon } from "./icons";
 

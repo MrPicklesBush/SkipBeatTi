@@ -3,7 +3,7 @@ import "../App.css";
 import { ShuffleIcon, MoreOptionsIcon } from './icons';
 
 
-const Playlists = () => {
+const Albums = () => {
   const playlist = {
     title: "it's me, Gracie",
     subtitle: "everything i'm into right now love u",
@@ -78,4 +78,4 @@ const Playlists = () => {
   );
 };
 
-export default Playlists;
+export default Albums;
