@@ -13,9 +13,6 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
               <Link to="/artists">Artists</Link> {/* Link to the Artists page */}
             </li>
             <li>
@@ -34,7 +31,6 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/artists" element={<Artists />} /> {/* Route for Artists page */}
           <Route path="/albums" element={<Albums />} /> {/* Route for Albums page */}
           <Route path="/profile" element={<Profile />} /> {/* Route for Profile page */}
@@ -44,10 +40,6 @@ function App() {
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <h1>Hi Super Team :)</h1>;
 }
 
 export default App;

@@ -8,21 +8,18 @@ const Albums = () => {
     title: "it's me, Gracie",
     subtitle: "everything i'm into right now love u",
     creator: "Gracie Abrams",
-    stats: " • 26,664 saves • 56 songs, 3 hr 27 min",
     songs: [
       {
         id: 1,
         title: "Unlearn (with Gracie Abrams)",
         artist: "benny blanco, Gracie Abrams",
-        album: "Unlearn (with Gracie A...",
-        duration: "2:35",
+        album: "Unlearn (with Gracie A..."
       },
       {
         id: 2,
         title: "Brush Fire",
         artist: "Gracie Abrams",
-        album: "Brush Fire",
-        duration: "3:10",
+        album: "Brush Fire"
       },
       // Add more songs as needed
     ],
@@ -70,7 +67,6 @@ const Albums = () => {
               {song.isVerified && <span className="verified-badge">✓</span>}
             </div>
             <span className="song-plays">{song.plays}</span>
-            <span className="song-duration">{song.duration}</span>
           </div>
         ))}
       </div>

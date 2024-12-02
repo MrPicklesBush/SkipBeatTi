@@ -5,7 +5,6 @@ const Profile = () => {
   const profileData = {
     name: "Bush",
     stats: {
-      playlists: 6,
       followers: 6,
       following: 8,
     },
@@ -16,7 +15,6 @@ const Profile = () => {
         artist: "bixby",
         album: "are you sleeping...",
         albumArt: "/track-1.jpg",
-        duration: "3:15",
       },
       {
         id: 2,
@@ -24,7 +22,6 @@ const Profile = () => {
         artist: "ILLIT",
         album: "I'LL LIKE YOU",
         albumArt: "/track-2.jpg",
-        duration: "2:45",
       },
       {
         id: 3,
@@ -32,7 +29,6 @@ const Profile = () => {
         artist: "Denise Julia",
         album: "Sweet Nothings",
         albumArt: "/track-3.jpg",
-        duration: "3:30",
       },
       {
         id: 4,
@@ -40,7 +36,6 @@ const Profile = () => {
         artist: "Regina Song",
         album: "fangirl",
         albumArt: "/track-4.jpg",
-        duration: "4:00",
       },
       {
         id: 5,
@@ -48,7 +43,6 @@ const Profile = () => {
         artist: "Fujii Kaze",
         album: "LOVE ALL SERVE",
         albumArt: "/track-5.jpg",
-        duration: "3:45",
       },
     ],
   };
@@ -61,7 +55,6 @@ const Profile = () => {
           <span className="playlist-type">Profile</span>
           <h1>{profileData.name}</h1>
           <p className="stats">
-            {profileData.stats.playlists} Public Playlists •{" "}
             {profileData.stats.followers} Followers •{" "}
             {profileData.stats.following} Following
           </p>
@@ -98,7 +91,6 @@ const Profile = () => {
                 </div>
               </div>
               <span className="song-album">{track.album}</span>
-              <span className="song-duration">{track.duration}</span>
             </div>
           ))}
         </div>
