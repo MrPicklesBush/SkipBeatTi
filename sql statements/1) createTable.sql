@@ -1,82 +1,122 @@
-CREATE DATABASE skib;
-USE skib;
+CREATE DATABASE SkipBeatTi;
+USE SkipBeatTi;
 
+-- User table
 CREATE TABLE User (
-    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    -- birthday DATE,
-    -- phone_num VARCHAR(15),
-    email VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Friend (
-    friend_id INT AUTO_INCREMENT PRIMARY KEY
-);
-
-CREATE TABLE User_Has_Friend (
-    user_id INT NOT NULL,
-    friend_id INT NOT NULL,
-    PRIMARY KEY (user_id, friend_id),
-    FOREIGN KEY (user_id) REFERENCES User (user_id) ON DELETE CASCADE,
-    FOREIGN KEY (friend_id) REFERENCES Friend (friend_id) ON DELETE CASCADE
-
-);
-
-
 CREATE TABLE Artist (
-    artist_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE Song (
-    song_id INT AUTO_INCREMENT PRIMARY KEY,
+    artist_id INT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    length TIME,
-    artist_id INT,
-    rating DOUBLE,
-    FOREIGN KEY (artist_id) REFERENCES Artist(artist_id)
+    genre ENUM('Country', 'Pop', 'Rock', 'R&B', 'HipHop') NOT NULL
 );
 
 CREATE TABLE Album (
-    album_id INT AUTO_INCREMENT PRIMARY KEY,
+    album_id INT PRIMARY KEY,
+    artist_id INT NOT NULL,
     name VARCHAR(100) NOT NULL,
-    year YEAR
+    year YEAR NOT NULL,
+    FOREIGN KEY (artist_id) REFERENCES Artist(artist_id) ON DELETE CASCADE
 );
 
-CREATE TABLE Playlist (
-    playlist_id INT AUTO_INCREMENT PRIMARY KEY,
+
+CREATE TABLE Song (
+    song_id INT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    owner_id INT NOT NULL,
-    is_collaborative BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (owner_id) REFERENCES User(user_id)
+    artist_id INT NOT NULL,
+    album_id INT, -- some songs are singles, not part of any album
+    photo_id INT,
+    -- rating associated, redundant to store
+    FOREIGN KEY (artist_id) REFERENCES Artist(artist_id) ON DELETE CASCADE,
+    FOREIGN KEY (album_id) REFERENCES Album(album_id) ON DELETE CASCADE
+);
+
+-- UserHasFriend
+CREATE TABLE User_Has_Friend (
+   user_id1 INT NOT NULL,
+   user_id2 INT NOT NULL,
+   PRIMARY KEY (user_id1, user_id2),
+   FOREIGN KEY (user_id1) REFERENCES User (user_id) ON DELETE CASCADE,
+   FOREIGN KEY (user_id2) REFERENCES User (user_id) ON DELETE CASCADE
+
+);
+
+
+CREATE TABLE Playlist (
+    playlist_id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    creation_date DATE NOT NULL
+);
+
+-- only editable by one user
+CREATE TABLE PersonalPlaylist (
+    playlist_id INT PRIMARY KEY,
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (playlist_id) REFERENCES Playlist(playlist_id) ON DELETE CASCADE
+);
+
+CREATE TABLE CollaborativePlaylist (
+    playlist_id INT PRIMARY KEY,
+     FOREIGN KEY (playlist_id) REFERENCES Playlist(playlist_id) ON DELETE CASCADE
+);
+
+CREATE TABLE UserEditsCollaborativePlaylist (
+     user_id INT,
+     playlist_id INT,
+     PRIMARY KEY(user_id, playlist_id),
+     FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
+     FOREIGN KEY (playlist_id) REFERENCES CollaborativePlaylist(playlist_id) ON DELETE CASCADE
+);
+
+CREATE TABLE PlaylistHasSong (
+     playlist_id INT,
+     song_id INT,
+     PRIMARY KEY(playlist_id, song_id),
+     FOREIGN KEY (song_id) REFERENCES Song(song_id) ON DELETE CASCADE,
+     FOREIGN KEY (playlist_id) REFERENCES Playlist(playlist_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Rating (
-    rating_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
-    value INT CHECK (value >= 1 AND value <= 5),  -- Assume rate from 1 to 5
-    FOREIGN KEY (user_id) REFERENCES User(user_id)
+    song_id INT,
+    value INT CHECK (value BETWEEN 1 AND 5),
+    PRIMARY KEY (user_id, song_id),
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (song_id) REFERENCES Song(song_id)
 );
 
 CREATE TABLE Comment (
-    comment_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
-    text VARCHAR(100),
+    song_id INT,
+    text_content TEXT,
+    PRIMARY KEY (user_id, song_id),
+    FOREIGN KEY (song_id) REFERENCES Song(song_id),
     FOREIGN KEY (user_id) REFERENCES User(user_id)
 );
 
 CREATE TABLE ProfilePhoto (
-    photo_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    photo_url VARCHAR(255),  -- Assuming storing the URL/path to the photo
-    FOREIGN KEY (user_id) REFERENCES User(user_id)
+    photo_id INT PRIMARY KEY,
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
+
 );
 
-CREATE TABLE ContentPhoto (
-    photo_id INT AUTO_INCREMENT PRIMARY KEY,
-    content_id INT,
-    photo_url VARCHAR(255),
-    FOREIGN KEY (content_id) REFERENCES User(user_id) 
+CREATE TABLE AlbumPhoto (
+    photo_id INT PRIMARY KEY,
+    album_id INT NOT NULL,
+    FOREIGN KEY (album_id) REFERENCES Album(album_id) ON DELETE CASCADE
+
+);
+
+CREATE TABLE SongPhoto (
+    photo_id INT PRIMARY KEY,
+    song_id INT NOT NULL,
+    FOREIGN KEY (song_id) REFERENCES Song(song_id) ON DELETE CASCADE
+
 );
