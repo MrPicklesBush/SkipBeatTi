@@ -1,3 +1,6 @@
+CREATE DATABASE skib;
+USE skib;
+
 CREATE TABLE User (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
@@ -8,12 +11,17 @@ CREATE TABLE User (
     password VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE Friends (
-    user_id1 INT NOT NULL,
-    user_id2 INT NOT NULL,
-    PRIMARY KEY (user_id1, user_id2),
-    FOREIGN KEY (user_id1) REFERENCES users(user_id),
-    FOREIGN KEY (user_id2) REFERENCES users(user_id)
+CREATE TABLE Friend (
+    friend_id INT AUTO_INCREMENT PRIMARY KEY
+);
+
+CREATE TABLE User_Has_Friend (
+    user_id INT NOT NULL,
+    friend_id INT NOT NULL,
+    PRIMARY KEY (user_id, friend_id),
+    FOREIGN KEY (user_id) REFERENCES User (user_id) ON DELETE CASCADE,
+    FOREIGN KEY (friend_id) REFERENCES Friend (friend_id) ON DELETE CASCADE
+
 );
 
 
@@ -27,7 +35,7 @@ CREATE TABLE Song (
     name VARCHAR(100) NOT NULL,
     length TIME,
     artist_id INT,
-    rating DOUBLE, 
+    rating DOUBLE,
     FOREIGN KEY (artist_id) REFERENCES Artist(artist_id)
 );
 
@@ -42,7 +50,7 @@ CREATE TABLE Playlist (
     name VARCHAR(100) NOT NULL,
     owner_id INT NOT NULL,
     is_collaborative BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (owner_id) REFERENCES users(user_id)
+    FOREIGN KEY (owner_id) REFERENCES User(user_id)
 );
 
 CREATE TABLE Rating (
