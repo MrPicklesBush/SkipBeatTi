@@ -30,7 +30,6 @@ CREATE TABLE Song (
     name VARCHAR(100) NOT NULL,
     artist_id INT NOT NULL,
     album_id INT, -- some songs are singles, not part of any album
-    photo_id INT,
     -- rating associated, redundant to store
     FOREIGN KEY (artist_id) REFERENCES Artist(artist_id) ON DELETE CASCADE,
     FOREIGN KEY (album_id) REFERENCES Album(album_id) ON DELETE CASCADE
