@@ -1,62 +1,61 @@
 ----------- FILTER SONGS -------------
 
--- list all songs
-SELECT s.song_id FROM Song s;
 
--- Search song by title
-SELECT s.song_id FROM Song s WHERE s.title LIKE '%s.title%';
+-- list all songs
+SELECT * FROM Song s;
+
+
+-- Search song by name
+SELECT * FROM Song s WHERE s.song_name LIKE '%s.song_name%';
+
 
 -- Search song by artist
-SELECT s.song_id FROM Song s, Artist a WHERE a.name LIKE '%s.artist%'; --AND s.artist_id = a.id 
+SELECT * FROM Song s, Artist a WHERE a.artist_name LIKE '%name%' AND s.artist_id = a.artist_id; 
+
 
 -- Search song by album
-SELECT s.song_id FROM Song s, Album a WHERE a.title LIKE '%s.album%'; --AND s.album_id = a.id 
--- return only exact match or all results? --> return random order - sort alphatically????
+SELECT * FROM Song s, Album a WHERE a.album_name LIKE '%s.album_name%' AND s.album_id = a.album_id;
+
 
 -- Search song by genre
-SELECT s.song_id FROM Song s, Artist a WHERE a.genre LIKE '%s.a%'; --AND s.artist_id = a.id 
-
--- Search song by release date
-SELECT s.song_id FROM Song s WHERE s.year = s.year;
-
--- Search song by title & album
-SELECT s.song_id FROM Song s, Album a WHERE s.title LIKE '%s.title%' AND a.title LIKE '%s.album%'; --AND s.album_id = a.id
-
--- Search song by title & artist 
-SELECT s.song_id FROM Song s, Artist a WHERE s.title LIKE '%s.title%' AND a.name LIKE '%s.artist%'; --AND s.artist_id = a.id
-
--- Search song by title & artist & release date
-SELECT s.song_id FROM Song s, Artist a WHERE s.title LIKE '%s.title%' AND a.name LIKE '%s.artist%' AND s.year = s.year; --AND s.artist_id = a.id
+SELECT * FROM Song s, Artist a WHERE a.genre LIKE 'hiphop' AND s.artist_id = a.artist_id;
 
 
 
 
 ----------- FILTER ALBUMS -------------
 
--- list all albums
-SELECT a.album_id FROM Album a;
 
--- search album by title
-SELECT a.album_id FROM Album a WHERE a.title LIKE '%a.title%';
+-- list all albums
+SELECT * FROM Album a;
+
+
+-- search album by name
+SELECT * FROM Album a WHERE a.album_name LIKE '%a.album_name%';
+
 
 -- search album by artist
-SELECT a.album_id FROM Album a, Artist ar WHERE ar.name LIKE '%a.artist%'; --AND a.artist_id = ar.id
+SELECT * FROM Album a, Artist ar WHERE ar.artist_name LIKE '%a.artist_name%' AND a.artist_id = ar.artist_id;
+
 
 -- search album by genre
-SELECT a.album_id FROM Album a, Artist ar WHERE ar.genre LIKE '%a.genre%'; --AND a.artist_id = ar.id
+SELECT * FROM Album a, Artist ar WHERE ar.genre LIKE '%a.genre%'; 
+
 
 -- search album by release date
-SELECT a.album_id FROM Album a WHERE a.year = a.year;
+SELECT * FROM Album a WHERE a.year = {a.year};
 
 
 
 ----------- FILTER ARTISTS -------------
 
--- list all artists
-SELECT a.artist_id FROM Artist a;
 
--- search artist by name
-SELECT a.artist_id FROM Artist a WHERE a.name LIKE '%a.name%';
+-- list all artist
+SELECT * FROM Artist a;
+
+-- search artist by nam
+SELECT * FROM Artist a WHERE a.name LIKE '%a.name%';
+
 
 -- search artist by genre
-SELECT a.artist_id FROM Artist a WHERE a.genre LIKE '%a.genre%';
+SELECT * FROM Artist a WHERE a.genre LIKE '%a.genre%';

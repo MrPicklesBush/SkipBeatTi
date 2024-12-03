@@ -12,14 +12,14 @@ CREATE TABLE User (
 
 CREATE TABLE Artist (
     artist_id INT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    artist_name VARCHAR(100) NOT NULL,
     genre ENUM('Country', 'Pop', 'Rock', 'R&B', 'HipHop') NOT NULL
 );
 
 CREATE TABLE Album (
     album_id INT PRIMARY KEY,
     artist_id INT NOT NULL,
-    name VARCHAR(100) NOT NULL,
+    album_name VARCHAR(100) NOT NULL,
     year YEAR NOT NULL,
     FOREIGN KEY (artist_id) REFERENCES Artist(artist_id) ON DELETE CASCADE
 );
@@ -27,7 +27,7 @@ CREATE TABLE Album (
 
 CREATE TABLE Song (
     song_id INT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    song_name VARCHAR(100) NOT NULL,
     artist_id INT NOT NULL,
     album_id INT, -- some songs are singles, not part of any album
     -- rating associated, redundant to store

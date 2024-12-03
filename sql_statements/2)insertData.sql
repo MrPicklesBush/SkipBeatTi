@@ -10,12 +10,12 @@ INSERT INTO Artist (artist_id, name, genre) VALUES
 (1, 'Carrie Underwood', 'Country'),
 (2, 'The Beatles', 'Rock'),
 (3, 'Sza', 'R&B'),
-(4, 'Nicki Minaj', 'HipHop'),
+(4, 'Drake', 'HipHop'),
 (5, 'Taylor Swift', 'Pop');
 
 
 INSERT INTO Album (album_id, artist_id, name, year) VALUES
-(1, 1, 'My Gift', 2020 ),
+(1, 1, 'My Gift', 2020),
 (2, 1, 'Some Hearts', 2005),
 (3, 2, 'Moon Music', 2024),
 (4, 2, 'Music of the Spheres', 2021),
