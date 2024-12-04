@@ -5,6 +5,7 @@ import Albums from './components/Albums';
 import Profile from './components/Profile';
 import Homepage from './components/HomePage';
 import SongPage from './components/SongPage';
+import Search from './components/Search';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
             <li>
               <Link to="/song">Song</Link>
             </li> 
+            <li>
+              <Link to="/search">Search</Link>
+            </li> 
           </ul>
         </nav>
 
@@ -35,7 +39,8 @@ function App() {
           <Route path="/albums" element={<Albums />} /> {/* Route for Albums page */}
           <Route path="/profile" element={<Profile />} /> {/* Route for Profile page */}
           <Route path="/homepage" element={<Homepage />} /> {/* Route for Home page */}
-          <Route path="/song" element={<SongPage />} /> {/* Add a new route for the Song page */}
+          <Route path="/song" element={<SongPage />} /> {/* Route for the Song page */}
+          <Route path="/search" element={<Search />} /> {/* Route for the Search page */}
         </Routes> 
       </div>
     </Router>

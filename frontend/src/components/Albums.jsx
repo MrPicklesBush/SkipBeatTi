@@ -50,7 +50,6 @@ const Albums = () => {
         <button className="shuffle">
             <ShuffleIcon />
         </button>
-        <button className="add">+</button>
       </div>
 
       <div className="songs-list">

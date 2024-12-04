@@ -1,5 +1,6 @@
 import React from "react";
-import { ShuffleIcon, MoreOptionsIcon } from "./icons";
+import { ShuffleIcon} from "./icons";
+import "../App.css";
 
 const Profile = () => {
   const profileData = {
@@ -72,9 +73,6 @@ const Profile = () => {
         <button className="play-button">▶</button>
         <button className="shuffle">
           <ShuffleIcon />
-        </button>
-        <button className="more-options">
-          <MoreOptionsIcon />
         </button>
       </div>
 
