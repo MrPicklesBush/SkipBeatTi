@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { ShuffleIcon, MoreOptionsIcon } from './icons';
+import { ShuffleIcon} from './icons';
 
 
 const Albums = () => {
@@ -51,10 +51,6 @@ const Albums = () => {
             <ShuffleIcon />
         </button>
         <button className="add">+</button>
-        <button className="download">↓</button>
-        <button className="more-options">
-            <MoreOptionsIcon />
-        </button>
       </div>
 
       <div className="songs-list">

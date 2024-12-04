@@ -1,34 +1,50 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "../App.css";
-import { ShuffleIcon, MoreOptionsIcon } from "./icons";
+import axios from "axios";
 
 function Artists() {
+  const [playlists, setPlaylists] = useState([{
+    title: "number two girl",
+    type: "Future Release • Single",
+    image: "/path/to/image1.jpg",
+  }]);
+
+  useEffect(() => {
+    console.log("calling axios.get_student");
+    axios.get('/playlists')
+//        .then(response => response.json())
+        .then((res) => {
+          console.log("Getting reply from server " + res.data);
+          setPlaylists(res.data);
+        })
+//        .then(playlists => setPlaylists(playlists))
+        .catch(error => console.error('Error fetching playlists:', error));
+  }, []);
+  
   const songs = [
     {
       id: 1,
       title: "APT.",
-      isVerified: true,
     },
     {
       id: 2,
       title: "On The Ground",
-      isVerified: false,
     },
     {
       id: 3,
       title: "Gone",
-      isVerified: false,
     },
     {
       id: 4,
       title: "Gone - Live",
-      isVerified: false,
     },
   ];
+
+  
   const aboutText =
     "As a member of BLACKPINK, one of the best-selling girl groups of all time, ROSÉ has shattered records, performed on the most heralded stages, and amassed millions of fans around the world.";
 
-  const playlists = [
+/* const playlists = [
     {
       title: "number one girl",
       type: "Latest Release • Single",
@@ -60,6 +76,7 @@ function Artists() {
       image: "/path/to/image6.jpg",
     },
   ];
+*/
 
   return (
     <div className="artists-container">
@@ -92,9 +109,6 @@ function Artists() {
                   <div className="song-info">
                     <img src={song.albumArt} alt={song.title} />
                     <span className="song-title">{song.title}</span>
-                    {song.isVerified && (
-                      <span className="verified-badge">✓</span>
-                    )}
                   </div>
                 </div>
               ))}
@@ -134,3 +148,5 @@ function Artists() {
 }
 
 export default Artists;
+
+

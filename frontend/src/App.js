@@ -22,11 +22,11 @@ function App() {
               <Link to="/profile">Profile</Link> {/* Link to the Profiles page */}
             </li>
             <li>
-              <Link to="/homepage">homepage</Link> {/* Link to the Home page */}
+              <Link to="/homepage">Homepage</Link> {/* Link to the Home page */}
             </li>
             <li>
               <Link to="/song">Song</Link>
-            </li> {/* Add a new link for the Song page */}
+            </li> 
           </ul>
         </nav>
 
