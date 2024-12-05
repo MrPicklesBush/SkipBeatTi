@@ -9,3 +9,25 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+export const Song = {
+  _id: '',
+  title: '',
+  artist: '',
+  album: null,
+  imageUrl: '',
+  audioUrl: '',
+  duration: '',
+  createdAt: '',
+  updatedAt: ''
+};
+
+export const Album = {
+  _id: '',
+  title: '',
+  artist: '',
+  album: null,
+  imageUrl: '',
+  releaseYear: 0,
+  songs: []
+};
