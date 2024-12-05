@@ -1,9 +1,13 @@
 import React from "react";
 import "../App.css";
 import { ShuffleIcon} from './icons';
+import { useParams } from 'react-router-dom';
+
 
 
 const Albums = () => {
+  const { albumId } = useParams();
+  
   const playlist = {
     title: "it's me, Gracie",
     subtitle: "everything i'm into right now love u",

@@ -43,7 +43,7 @@ const Homepage = () => {
 
   return (
     <div className="homepage">
-      <h2>Recently played</h2>
+      <h2>Recent Playlists</h2>
       <div className="album-grid">
         {albums.map((album) => (
           <div key={album.id} className="album-card">

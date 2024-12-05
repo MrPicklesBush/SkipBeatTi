@@ -19,14 +19,14 @@ const PORT = 5004;
 // app.use("/api/albums", albumRoutes);
 // app.use("/api/playlists", playlistRoutes)
 
-// const db = mysql.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "Lavender123!",
-//     database: "SkipBeatTi"
-// })
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "Lavender123!",
+    database: "SkipBeatTi"
+})
 
-const db = null;
+//const db = null;
 
 const playlists = [
     {

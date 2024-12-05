@@ -1,26 +1,35 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 import axios from "axios";
 
 function Artists() {
-  const [playlists, setPlaylists] = useState([{
-    title: "number two girl",
-    type: "Future Release • Single",
-    image: "/path/to/image1.jpg",
-  }]);
+  const navigate = useNavigate();
+  const handleAlbumClick = (albumId) => {
+    navigate(`/albums/${albumId}`);
+  };
+
+  const [playlists, setPlaylists] = useState([
+    {
+      title: "number two girl",
+      type: "Future Release • Single",
+      image: "/path/to/image1.jpg",
+    },
+  ]);
 
   useEffect(() => {
     console.log("calling axios.get_student");
-    axios.get('/artist_playlists')
-//        .then(response => response.json())
-        .then((res) => {
-          console.log("Getting reply from server " + res.data);
-          setPlaylists(res.data);
-        })
-//        .then(playlists => setPlaylists(playlists))
-        .catch(error => console.error('Error fetching playlists:', error));
+    axios
+      .get('/artist_playlists')
+      //        .then(response => response.json())
+      .then((res) => {
+        console.log("Getting reply from server " + res.data);
+        setPlaylists(res.data);
+      })
+      //        .then(playlists => setPlaylists(playlists))
+      .catch((error) => console.error("Error fetching playlists:", error));
   }, []);
-  
+
   const songs = [
     {
       id: 1,
@@ -40,11 +49,10 @@ function Artists() {
     },
   ];
 
-  
   const aboutText =
     "As a member of BLACKPINK, one of the best-selling girl groups of all time, ROSÉ has shattered records, performed on the most heralded stages, and amassed millions of fans around the world.";
 
-/* const playlists = [
+  /* const playlists = [
     {
       title: "number one girl",
       type: "Latest Release • Single",
@@ -131,7 +139,11 @@ function Artists() {
         <h2>Top albums</h2>
         <div className="album-grid">
           {playlists.map((album) => (
-            <div key={album.id} className="album-card">
+            <div
+              key={album.id}
+              className="album-card"
+              onClick={() => handleAlbumClick(album.id)}
+            >
               <div className="album-image">
                 <img src={album.image} alt={album.title} />
               </div>
@@ -148,5 +160,3 @@ function Artists() {
 }
 
 export default Artists;
-
-
