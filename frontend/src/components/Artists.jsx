@@ -11,7 +11,7 @@ function Artists() {
 
   useEffect(() => {
     console.log("calling axios.get_student");
-    axios.get('/playlists')
+    axios.get('/artist_playlists')
 //        .then(response => response.json())
         .then((res) => {
           console.log("Getting reply from server " + res.data);
