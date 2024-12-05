@@ -486,12 +486,12 @@ nav a:hover {
   background-color: #121212;
   color: white;
   padding: 40px;
-  min-height: 100vh;
+  min-height: 10vh;
 }
 
 .search-page h1 {
-  font-size: 32px;
-  margin-bottom: 30px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .search-bar {

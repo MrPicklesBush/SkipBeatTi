@@ -6,6 +6,7 @@ import Profile from './components/Profile';
 import Homepage from './components/HomePage';
 import SongPage from './components/SongPage';
 import Search from './components/Search';
+import Playlists from './components/Playlists';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/artists">Artists</Link>
+              <Link to="/artists?artistId=1">Artists</Link>
             </li>
             <li>
               <Link to="/albums">Albums</Link>
@@ -28,8 +29,11 @@ function App() {
             <li>
               <Link to="/song">Song</Link>
             </li> 
-            <li>
+            {/* <li>
               <Link to="/search">Search</Link>
+            </li>  */}
+            <li>
+              <Link to="/playlists">Playlists</Link>
             </li> 
           </ul>
         </nav>
@@ -42,6 +46,7 @@ function App() {
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/song" element={<SongPage />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/playlists" element={<Playlists />} />
         </Routes> 
       </div>
     </Router>

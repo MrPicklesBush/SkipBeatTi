@@ -9,21 +9,18 @@ const Albums = () => {
   const { albumId } = useParams();
   
   const playlist = {
-    title: "it's me, Gracie",
-    subtitle: "everything i'm into right now love u",
+    title: "Unlearn (with Gracie Abrams)",
     creator: "Gracie Abrams",
     songs: [
       {
         id: 1,
         title: "Unlearn (with Gracie Abrams)",
         artist: "benny blanco, Gracie Abrams",
-        album: "Unlearn (with Gracie A..."
       },
       {
         id: 2,
         title: "Brush Fire",
         artist: "Gracie Abrams",
-        album: "Brush Fire"
       },
       // Add more songs as needed
     ],
@@ -40,7 +37,6 @@ const Albums = () => {
         <div className="playlist-info">
           <span className="playlist-type">Public Playlist</span>
           <h1>{playlist.title}</h1>
-          <p className="subtitle">{playlist.subtitle}</p>
           <div className="creator-info">
             <img src="/creator-avatar.jpg" alt="" className="creator-avatar" />
             <span>{playlist.creator}</span>
