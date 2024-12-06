@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import Search from './Search';
 
 const Homepage = () => {
   const albums = [
@@ -43,7 +44,8 @@ const Homepage = () => {
 
   return (
     <div className="homepage">
-      <h2>Recently played</h2>
+      <Search/>
+      <h2>Recent Playlists</h2>
       <div className="album-grid">
         {albums.map((album) => (
           <div key={album.id} className="album-card">

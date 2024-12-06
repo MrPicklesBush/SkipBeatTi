@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
 import "../App.css";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function StarRating({ rating, setRating }) {
   return (
@@ -22,6 +25,64 @@ function StarRating({ rating, setRating }) {
 function SongPage() {
   const [comments, setComments] = useState([]);
   const [rating, setRating] = useState(0);
+
+  // Access the parameters
+  const params = useParams();
+  const songName = params.songName;
+
+  const navigate = useNavigate();
+
+  // Sends artistName to ArtistPage
+  const handleArtistClickByName = (artistName) => {
+    console.log("Sending artistName to ARtist page" + artistName);
+    navigate(`/artists/name/${artistName}`);
+  };
+
+  const [songInfo, setSongInfo] = useState([
+    {
+      artist_id: "",
+      album_id: "",
+    },
+  ]);
+
+  const [artistInfo, setArtistInfo] = useState(
+    {
+      artist_name: "",
+      genre: "",
+    });
+
+
+  // getting song information (artist name, artist id) by passing songName to server
+  useEffect(() => {
+    console.log("calling axios");  
+    axios
+      .get('/song_info', {
+        params: {
+          songName: songName
+        }
+      })
+      .then((res) => {
+        console.log("Getting reply from server ", res.data);
+        setSongInfo(res.data);
+
+        // Use res:artist_id from the first call to make a second call to grab artist info
+        if (res.data.length > 0) {
+          const artistId = res.data[0].artist_id; // Get artist_id from the first call
+          return axios.get('/artist_info', { params: { artist_id: artistId } }); // Second API call
+        } else {
+          throw new Error('No songs found');
+        }
+      })
+      .then((res) => {
+        console.log("Getting artist name and genre from server call /artist_info ", res.data);
+        if (res.data.length > 0) {  // Set data into the state setArtistInfo
+          setArtistInfo(res.data[0]); // Set the first object in the array
+        } else {
+          throw new Error('No artist found');
+        }
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [songName]);
 
   // Hardcoded song details (replace with actual data later)
   const song = {
@@ -68,11 +129,15 @@ function SongPage() {
         </div>
         <div className="song-details">
           <div className="title-rating">
-            <h1 className="songComment-title">{song.title}</h1>
+            <h1 className="songComment-title">{songName}</h1>
             <StarRating rating={rating} setRating={setRating} />
           </div>
-          <h2 className="song-artist">Artist: {song.artist}</h2>
-          <p className="song-album">Album: {song.album}</p>
+          <button
+            className="song-artist"
+            onClick={() => handleArtistClickByName(artistInfo.artist_name)}
+          >
+            {artistInfo.artist_name}
+          </button>
         </div>
       </div>
 

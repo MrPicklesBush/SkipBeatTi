@@ -1,34 +1,73 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
-import { ShuffleIcon, MoreOptionsIcon } from "./icons";
+import axios from "axios";
+import SongList from './SongList'; 
+import { useParams } from 'react-router-dom';
+
 
 function Artists() {
+
+  // Access the parameters
+  const params = useParams();
+  const artistName = params.artistName;
+
+  const navigate = useNavigate();
+  const handleAlbumClick = (albumId) => {
+    navigate(`/albums/${albumId}`);
+  };
+
+  const [playlists, setPlaylists] = useState([
+    {
+      title: "number two girl",
+      type: "Future Release • Single",
+      image: "/path/to/image1.jpg",
+    },
+  ]);
+
+  // getting list of playlists 
+  useEffect(() => {
+    console.log("calling axios");
+    axios
+      .get('/artist_playlists')
+      .then((res) => {
+        console.log("Getting reply from server " + res.data);
+        setPlaylists(res.data);
+      })
+      .catch((error) => console.error("Error fetching playlists:", error));
+  }, []);
+
   const songs = [
     {
       id: 1,
       title: "APT.",
-      isVerified: true,
+      image: "/path/to/image1.jpg",
+      artist: "Rose",
     },
     {
       id: 2,
       title: "On The Ground",
-      isVerified: false,
+      image: "/path/to/image2.jpg",
+      artist: "Rose",
     },
     {
       id: 3,
       title: "Gone",
-      isVerified: false,
+      image: "/path/to/image3.jpg",
+      artist: "Rose",
     },
     {
       id: 4,
       title: "Gone - Live",
-      isVerified: false,
+      image: "/path/to/image4.jpg",
+      artist: "Rose",
     },
   ];
+
   const aboutText =
     "As a member of BLACKPINK, one of the best-selling girl groups of all time, ROSÉ has shattered records, performed on the most heralded stages, and amassed millions of fans around the world.";
 
-  const playlists = [
+  /* const playlists = [
     {
       title: "number one girl",
       type: "Latest Release • Single",
@@ -60,6 +99,7 @@ function Artists() {
       image: "/path/to/image6.jpg",
     },
   ];
+*/
 
   return (
     <div className="artists-container">
@@ -72,7 +112,7 @@ function Artists() {
         </div>
         <div className="artist-info">
           <span className="verified-badge">Verified Artist</span>
-          <h1>ARTIST NAME</h1>
+          <h1>{artistName}</h1>
         </div>
       </div>
       <div className="content-wrapper">
@@ -85,20 +125,7 @@ function Artists() {
           </div>
           <div className="popular-songs">
             <h2>Popular</h2>
-            <div className="songs-list">
-              {songs.map((song, index) => (
-                <div key={song.id} className="song-row">
-                  <span className="song-number">{index + 1}</span>
-                  <div className="song-info">
-                    <img src={song.albumArt} alt={song.title} />
-                    <span className="song-title">{song.title}</span>
-                    {song.isVerified && (
-                      <span className="verified-badge">✓</span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <SongList songs={songs} />
           </div>
         </div>
         <div className="about-section">
@@ -117,7 +144,11 @@ function Artists() {
         <h2>Top albums</h2>
         <div className="album-grid">
           {playlists.map((album) => (
-            <div key={album.id} className="album-card">
+            <div
+              key={album.id}
+              className="album-card"
+              onClick={() => handleAlbumClick(album.id)}
+            >
               <div className="album-image">
                 <img src={album.image} alt={album.title} />
               </div>

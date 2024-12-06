@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../App.css';
 
 function CommentForm({ onAddComment }) {
   const [commentText, setCommentText] = useState('');
@@ -23,8 +24,8 @@ function CommentForm({ onAddComment }) {
         onChange={(e) => setCommentText(e.target.value)}
         placeholder="Add a comment..."
       />
-      <button type="submit">Comment</button>
-    </form>
+      <button type="submit" class="custom-button">Comment</button>
+</form>
   );
 }
 

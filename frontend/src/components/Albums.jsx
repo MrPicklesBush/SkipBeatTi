@@ -1,25 +1,35 @@
-import React from "react";
+import React, {useState } from "react";
 import "../App.css";
-import { ShuffleIcon, MoreOptionsIcon } from './icons';
+import { ShuffleIcon} from './icons';
+import { useParams } from 'react-router-dom';
+import SongList from "./SongList";
+import { useNavigate } from "react-router-dom";
 
 
 const Albums = () => {
+  const { albumId } = useParams();
+  const navigate = useNavigate();
+
+
+  const handleArtistClickByName = (artistName) => {
+    console.log("Sending artistName to ARtist page" + artistName);
+    navigate(`/artists/name/${artistName}`);
+  };
+  
+
   const playlist = {
-    title: "it's me, Gracie",
-    subtitle: "everything i'm into right now love u",
+    title: "Unlearn (with Gracie Abrams)",
     creator: "Gracie Abrams",
     songs: [
       {
         id: 1,
-        title: "Unlearn (with Gracie Abrams)",
-        artist: "benny blanco, Gracie Abrams",
-        album: "Unlearn (with Gracie A..."
+        title: "Let There Be Peace",
+        artist: "Carrie Underwood",
       },
       {
         id: 2,
         title: "Brush Fire",
         artist: "Gracie Abrams",
-        album: "Brush Fire"
       },
       // Add more songs as needed
     ],
@@ -36,10 +46,14 @@ const Albums = () => {
         <div className="playlist-info">
           <span className="playlist-type">Public Playlist</span>
           <h1>{playlist.title}</h1>
-          <p className="subtitle">{playlist.subtitle}</p>
           <div className="creator-info">
             <img src="/creator-avatar.jpg" alt="" className="creator-avatar" />
-            <span>{playlist.creator}</span>
+            <button
+                className="song-artist"
+                onClick={() => handleArtistClickByName(playlist.creator)}
+              >
+                {playlist.creator}
+            </button>
             <span className="stats">{playlist.stats}</span>
           </div>
         </div>
@@ -50,26 +64,9 @@ const Albums = () => {
         <button className="shuffle">
             <ShuffleIcon />
         </button>
-        <button className="add">+</button>
-        <button className="download">↓</button>
-        <button className="more-options">
-            <MoreOptionsIcon />
-        </button>
       </div>
 
-      <div className="songs-list">
-        {playlist.songs.map((song, index) => (
-          <div key={song.id} className="song-row">
-            <span className="song-number">{index + 1}</span>
-            <div className="song-info">
-              <img src={song.albumArt} alt={song.title} />
-              <span className="song-title">{song.title}</span>
-              {song.isVerified && <span className="verified-badge">✓</span>}
-            </div>
-            <span className="song-plays">{song.plays}</span>
-          </div>
-        ))}
-      </div>
+      <SongList songs={playlist.songs} />
     </div>
   );
 };
