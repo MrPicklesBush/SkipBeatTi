@@ -19,3 +19,14 @@ Instructions are as follows:
 5. cd frontend
 6. npm install
 7. npm start
+
+# Member Contributions
+**Lisa Yu**: coded features for displaying songs, albums, & playlists
+
+**Lani Do**: coded SQL statements & wrote final report
+
+**Kevin Cui**: coded song playback feature connected to Spotify API
+
+**Bush Nguyen**: coded user login feature
+
+**Shakshi Sharma**: coded SQL statements & wrote final report
