@@ -88,5 +88,51 @@ app.get('/artist_playlists', (req, res) => {
 
   });
 
+  // Grab song info by songName 
+app.get('/song_info', (req, res) => {
+  console.log("server is getting song info");
+  const songName = req.query.songName;
+
+  if (db !== null && db !== undefined) {
+    console.log("db instance is ok; do select * next");
+    db.query('SELECT artist_id, album_id FROM Song WHERE song_name = ?', [songName], (error, results) => {
+      if (error) {
+        console.log("db.query error: " + error);
+        return res.status(500).json({ error: 'Database query failed' });
+      }
+      console.log("db query succeeded, results are: " + results);
+      res.json(results);
+    });
+  }
+  else {
+    console.log("db instance is NOT created, sending empty string back");
+    res.json("");
+  }
+
+});
+
+// Grab artist_name and genre by artist id
+app.get('/artist_info', (req, res) => {
+  console.log("server is getting artist info");
+  const artistId = req.query.artist_id;
+
+  if (db !== null && db !== undefined) {
+    console.log("db instance is ok; do select * next");
+    db.query('SELECT artist_name, genre FROM Artist WHERE artist_id = ?', [artistId], (error, results) => {
+      if (error) {
+        console.log("db.query error: " + error);
+        return res.status(500).json({ error: 'Database query failed' });
+      }
+      console.log("db query succeeded, results are: " + results);
+      res.json(results);
+    });
+  }
+  else {
+    console.log("db instance is NOT created, sending empty string back");
+    res.json("");
+  }
+
+});
+
   // List of songs for a playlist 
   

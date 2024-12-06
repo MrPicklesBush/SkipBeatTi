@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState } from "react";
 import "../App.css";
 import { ShuffleIcon} from './icons';
 import { useParams } from 'react-router-dom';
@@ -10,18 +10,21 @@ const Albums = () => {
   const { albumId } = useParams();
   const navigate = useNavigate();
 
+
   const handleArtistClickByName = (artistName) => {
+    console.log("Sending artistName to ARtist page" + artistName);
     navigate(`/artists/name/${artistName}`);
   };
   
+
   const playlist = {
     title: "Unlearn (with Gracie Abrams)",
     creator: "Gracie Abrams",
     songs: [
       {
         id: 1,
-        title: "Unlearn (with Gracie Abrams)",
-        artist: "benny blanco, Gracie Abrams",
+        title: "Let There Be Peace",
+        artist: "Carrie Underwood",
       },
       {
         id: 2,

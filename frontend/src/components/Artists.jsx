@@ -7,8 +7,10 @@ import { useParams } from 'react-router-dom';
 
 
 function Artists() {
-  const { artistId } = useParams();
-  console.log("Getting artistId: " + artistId);
+
+  // Access the parameters
+  const params = useParams();
+  const artistName = params.artistName;
 
   const navigate = useNavigate();
   const handleAlbumClick = (albumId) => {
@@ -110,7 +112,7 @@ function Artists() {
         </div>
         <div className="artist-info">
           <span className="verified-badge">Verified Artist</span>
-          <h1>ARTIST NAME</h1>
+          <h1>{artistName}</h1>
         </div>
       </div>
       <div className="content-wrapper">

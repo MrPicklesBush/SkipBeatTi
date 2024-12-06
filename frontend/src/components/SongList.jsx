@@ -6,12 +6,15 @@ import { useNavigate } from "react-router-dom";
 const SongList = ({ songs }) => {
   const navigate = useNavigate();
 
-  const handleArtistClickById = (artistId) => {
-    navigate(`/artists/id/${artistId}`);
+  // Sends artistName to ArtistPage
+  const handleArtistClickByName = (artistName) => {
+    console.log("Sending artistName to ARtist page" + artistName);
+    navigate(`/artists/name/${artistName}`);
   };
 
-  const handleSongClick = (songId) => {
-    navigate(`/song/${songId}`);
+  // Sends songName to SongPage
+  const handleSongClick = (songName) => {
+    navigate(`/song/${songName}`);
   };
 
   if (!songs || songs.length === 0) {
@@ -34,7 +37,7 @@ const SongList = ({ songs }) => {
               </button>
               <button
                 className="song-artist"
-                onClick={() => handleArtistClickById(song.artistId)}
+                onClick={() => handleArtistClickByName(song.artist)}
               >
                 {song.artist}
               </button>

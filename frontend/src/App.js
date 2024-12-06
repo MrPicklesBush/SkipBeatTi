@@ -46,7 +46,7 @@ function App() {
           {/* New route for specific album */}
           <Route path="/profile" element={<Profile />} />
           <Route path="/homepage" element={<Homepage />} />
-          <Route path="/song/:songId" element={<SongPage />} />
+          <Route path="/song/:songName" element={<SongPage />} />
           <Route path="/search" element={<Search />} />
           <Route path="/playlists" element={<Playlists />} />
         </Routes>
