@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
 import "../App.css";
+import Footer from "./Footer";
+import { Navigate } from "react-router-dom";
 
 function StarRating({ rating, setRating }) {
   return (
@@ -20,16 +22,14 @@ function StarRating({ rating, setRating }) {
 }
 
 function SongPage() {
+  const token = localStorage.getItem("authToken");
+  console.log("Token:", token); // Log the token
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
+  // Hooks must always be called at the top level of the component
   const [comments, setComments] = useState([]);
   const [rating, setRating] = useState(0);
-
-  // Hardcoded song details (replace with actual data later)
-  const song = {
-    title: "Blinding Lights",
-    artist: "The Weeknd",
-    image: "https://example.com/song-image.jpg", // Replace with actual image URL
-    album: "After Hours",
-  };
 
   useEffect(() => {
     fetchComments();
@@ -40,13 +40,13 @@ function SongPage() {
       {
         id: 1,
         text: "Great song!",
-        username: "User1, ",
+        username: "User1",
         timestamp: new Date().toISOString(),
       },
       {
         id: 2,
         text: "Love this track!",
-        username: "User2, ",
+        username: "User2",
         timestamp: new Date().toISOString(),
       },
     ]);
@@ -56,28 +56,34 @@ function SongPage() {
     setComments([...comments, newComment]);
   };
 
+  // Redirect unauthorized users after Hooks have been initialized
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
+
   return (
     <div className="song-page">
       <div className="song-header">
         <div className="song-image-container">
           <img
-            src={song.image}
-            alt={`${song.title} album cover`}
+            src="https://example.com/song-image.jpg" // Replace with actual image URL
+            alt="Blinding Lights album cover"
             className="song-image"
           />
         </div>
         <div className="song-details">
           <div className="title-rating">
-            <h1 className="songComment-title">{song.title}</h1>
+            <h1 className="songComment-title">Blinding Lights</h1>
             <StarRating rating={rating} setRating={setRating} />
           </div>
-          <h2 className="song-artist">Artist: {song.artist}</h2>
-          <p className="song-album">Album: {song.album}</p>
+          <h2 className="song-artist">Artist: The Weeknd</h2>
+          <p className="song-album">Album: After Hours</p>
         </div>
       </div>
 
       <CommentForm onAddComment={addComment} />
       <CommentList comments={comments} />
+      <Footer />
     </div>
   );
 }

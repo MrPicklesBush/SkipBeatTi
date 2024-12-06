@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css';
-import Footer from "./Footer";
 import { Navigate } from "react-router-dom";
 
 
@@ -64,7 +63,6 @@ const Homepage = () => {
           </div>
         ))}
       </div>
-      <Footer />
     </div>
   );
 };
