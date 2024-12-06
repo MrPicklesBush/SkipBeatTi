@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-
+import Sidebar from "./Sidebar";
 import styled from "styled-components";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 import axios from "axios";
 import { useStateProvider } from "../utils/StateProvider";
 import Body from "./Body";
@@ -55,9 +56,9 @@ export default function Spotify() {
   return (
     <Container>
       <div className="spotify__body">
-        
+        <Sidebar />
         <div className="body" ref={bodyRef} onScroll={bodyScrolled}>
-          
+          <Navbar navBackground={navBackground} />
           <div className="body__contents">
             <Body headerBackground={headerBackground} />
           </div>

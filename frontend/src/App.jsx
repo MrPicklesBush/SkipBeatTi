@@ -12,7 +12,7 @@ export default function App() {
       if (token) {
         dispatch({ type: reducerCases.SET_TOKEN, token });
       }
-    }
+    }    
     document.title = "Spotify";
   }, [dispatch, token]);
   return <div>{token ? <Spotify /> : <Login />}</div>;

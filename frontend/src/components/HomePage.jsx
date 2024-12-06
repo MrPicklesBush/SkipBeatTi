@@ -1,7 +1,14 @@
 import React from 'react';
 import '../App.css';
+import Footer from "./Footer";
+import { Navigate } from "react-router-dom";
+
 
 const Homepage = () => {
+  const token = localStorage.getItem("authToken");
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
   const albums = [
     {
       id: 1,
@@ -57,6 +64,7 @@ const Homepage = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
