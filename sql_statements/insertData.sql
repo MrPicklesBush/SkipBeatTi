@@ -6,7 +6,7 @@ INSERT INTO User (user_id, first_name, last_name, email, password) VALUES
 (5, 'Bush', 'Nguyen', 'bush@gmail.com', '023FRE');
 
 
-INSERT INTO Artist (artist_id, artist_name, genre) VALUES
+INSERT INTO Artist (artist_id,artist_name, genre) VALUES
 (1, 'Carrie Underwood', 'Country'),
 (2, 'The Beatles', 'Rock'),
 (3, 'Sza', 'R&B'),
