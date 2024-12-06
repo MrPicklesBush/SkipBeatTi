@@ -24,6 +24,8 @@ Instructions are as follows:
 6. npm install
 7. npm start
 
+Additionally, since our project utilizes Node.js, you should have SQL version 8.0.4 or below to be compatible. 
+
 # Member Contributions
 **Lisa Yu**: coded features for displaying songs, albums, & playlists, & wrote Goals & Description in final report
 
