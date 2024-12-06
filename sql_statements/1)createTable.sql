@@ -84,7 +84,7 @@ CREATE TABLE PlaylistHasSong (
 CREATE TABLE Rating (
     user_id INT,
     song_id INT,
-    value INT CHECK (value BETWEEN 1 AND 5),
+    value DECIMAL(1, 0) (value BETWEEN 1 AND 5),
     PRIMARY KEY (user_id, song_id),
     FOREIGN KEY (user_id) REFERENCES User(user_id),
     FOREIGN KEY (song_id) REFERENCES Song(song_id)
