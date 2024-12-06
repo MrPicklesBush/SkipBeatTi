@@ -1,5 +1,6 @@
 import React from "react";
 import { ShuffleIcon} from "./icons";
+import SongList from "./SongList";
 import "../App.css";
 
 const Profile = () => {
@@ -9,7 +10,7 @@ const Profile = () => {
       followers: 6,
       following: 8,
     },
-    topTracks: [
+    songs: [
       {
         id: 1,
         title: "both of us",
@@ -76,23 +77,7 @@ const Profile = () => {
         </button>
       </div>
 
-      {profileData.topTracks && (
-        <div className="songs-list">
-          {profileData.topTracks.map((track, index) => (
-            <div key={track.id} className="song-row">
-              <span className="song-number">{index + 1}</span>
-              <div className="song-info">
-                <img src={track.albumArt} alt={track.title} />
-                <div className="song-details">
-                  <div className="song-title">{track.title}</div>
-                  <div className="song-artist">{track.artist}</div>
-                </div>
-              </div>
-              <span className="song-album">{track.album}</span>
-            </div>
-          ))}
-        </div>
-      )}
+      <SongList songs={profileData.songs}/>
     </div>
   );
 };

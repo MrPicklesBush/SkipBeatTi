@@ -2,8 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 import axios from "axios";
+import SongList from './SongList'; 
+import { useParams } from 'react-router-dom';
+
 
 function Artists() {
+  const { artistId } = useParams();
+  console.log("Getting artistId: " + artistId);
+
   const navigate = useNavigate();
   const handleAlbumClick = (albumId) => {
     navigate(`/albums/${albumId}`);
@@ -17,16 +23,15 @@ function Artists() {
     },
   ]);
 
+  // getting list of playlists 
   useEffect(() => {
-    console.log("calling axios.get_student");
+    console.log("calling axios");
     axios
       .get('/artist_playlists')
-      //        .then(response => response.json())
       .then((res) => {
         console.log("Getting reply from server " + res.data);
         setPlaylists(res.data);
       })
-      //        .then(playlists => setPlaylists(playlists))
       .catch((error) => console.error("Error fetching playlists:", error));
   }, []);
 
@@ -34,18 +39,26 @@ function Artists() {
     {
       id: 1,
       title: "APT.",
+      image: "/path/to/image1.jpg",
+      artist: "Rose",
     },
     {
       id: 2,
       title: "On The Ground",
+      image: "/path/to/image2.jpg",
+      artist: "Rose",
     },
     {
       id: 3,
       title: "Gone",
+      image: "/path/to/image3.jpg",
+      artist: "Rose",
     },
     {
       id: 4,
       title: "Gone - Live",
+      image: "/path/to/image4.jpg",
+      artist: "Rose",
     },
   ];
 
@@ -110,17 +123,7 @@ function Artists() {
           </div>
           <div className="popular-songs">
             <h2>Popular</h2>
-            <div className="songs-list">
-              {songs.map((song, index) => (
-                <div key={song.id} className="song-row">
-                  <span className="song-number">{index + 1}</span>
-                  <div className="song-info">
-                    <img src={song.albumArt} alt={song.title} />
-                    <span className="song-title">{song.title}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <SongList songs={songs} />
           </div>
         </div>
         <div className="about-section">

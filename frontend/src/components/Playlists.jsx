@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import { ShuffleIcon } from './icons';
+import SongList from "./SongList";
 
 const Playlists = () => {
   
@@ -48,21 +49,7 @@ const Playlists = () => {
         </button>
       </div>
 
-      <div className="songs-list">
-        {playlist.songs.map((song, index) => (
-          <div key={song.id} className="song-row">
-            <span className="song-number">{index + 1}</span>
-            <div className="song-info">
-              {/* Assuming there's an albumArt property */}
-              <img src={song.albumArt} alt={song.title} />
-              <span className="song-title">{song.title}</span>
-              {song.isVerified && <span className="verified-badge">✓</span>}
-            </div>
-            {/* Assuming there's a plays property */}
-            <span className="song-plays">{song.plays}</span>
-          </div>
-        ))}
-      </div>
+      <SongList songs={playlist.songs} />
     </div>
   );
 };

@@ -140,8 +140,16 @@ nav a:hover {
 }
 
 .song-title {
-  color: white;
-  font-size: 16px;
+  font-size: 1.0rem;
+  background: none; /* Remove default button background */
+  border: none; /* Remove default button border */
+  color: inherit; /* Inherit text color */
+  cursor: pointer; /* Change cursor to pointer */
+  text-decoration: none; /* No underline by default */
+}
+
+.song-title:hover {
+  text-decoration: underline; /* Underline on hover */
 }
 
 .song-plays {
@@ -460,13 +468,29 @@ nav a:hover {
   flex-grow: 1;
 }
 
+.song-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .songComment-title {
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
 
 .song-artist {
-  font-size: 1.5rem;
+  font-size: 1.0rem;
+  background: none; /* Remove default button background */
+  border: none; /* Remove default button border */
+  color: inherit; /* Inherit text color */
+  cursor: pointer; /* Change cursor to pointer */
+  text-decoration: none; /* No underline by default */
+  justify-content: left;
+}
+
+.song-artist:hover {
+  text-decoration: underline; /* Underline on hover */
 }
 
 .song-album {

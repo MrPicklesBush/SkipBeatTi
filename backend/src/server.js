@@ -66,7 +66,7 @@ app.listen(PORT, () => {
     console.log("Server is running on port " + PORT)
 })
 
-// Playlist
+// Grab list of Playlist
 app.get('/artist_playlists', (req, res) => {
     console.log("server is getting playlists get");
     if (db !== null && db !== undefined) {
@@ -87,3 +87,6 @@ app.get('/artist_playlists', (req, res) => {
     console.log("server is sending: " + playlists);
 
   });
+
+  // List of songs for a playlist 
+  

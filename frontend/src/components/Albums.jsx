@@ -2,11 +2,17 @@ import React from "react";
 import "../App.css";
 import { ShuffleIcon} from './icons';
 import { useParams } from 'react-router-dom';
-
+import SongList from "./SongList";
+import { useNavigate } from "react-router-dom";
 
 
 const Albums = () => {
   const { albumId } = useParams();
+  const navigate = useNavigate();
+
+  const handleArtistClickByName = (artistName) => {
+    navigate(`/artists/name/${artistName}`);
+  };
   
   const playlist = {
     title: "Unlearn (with Gracie Abrams)",
@@ -39,7 +45,12 @@ const Albums = () => {
           <h1>{playlist.title}</h1>
           <div className="creator-info">
             <img src="/creator-avatar.jpg" alt="" className="creator-avatar" />
-            <span>{playlist.creator}</span>
+            <button
+                className="song-artist"
+                onClick={() => handleArtistClickByName(playlist.creator)}
+              >
+                {playlist.creator}
+            </button>
             <span className="stats">{playlist.stats}</span>
           </div>
         </div>
@@ -52,19 +63,7 @@ const Albums = () => {
         </button>
       </div>
 
-      <div className="songs-list">
-        {playlist.songs.map((song, index) => (
-          <div key={song.id} className="song-row">
-            <span className="song-number">{index + 1}</span>
-            <div className="song-info">
-              <img src={song.albumArt} alt={song.title} />
-              <span className="song-title">{song.title}</span>
-              {song.isVerified && <span className="verified-badge">✓</span>}
-            </div>
-            <span className="song-plays">{song.plays}</span>
-          </div>
-        ))}
-      </div>
+      <SongList songs={playlist.songs} />
     </div>
   );
 };
