@@ -563,3 +563,133 @@ nav a:hover {
 .custom-button:hover {
   background-color: #2aa7d8;
 }
+
+
+/* LoginPage.css */
+.login-container {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #121212;
+  color: white;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #727272;
+  border-radius: 4px;
+  background-color: #121212;
+  color: white;
+  font-size: 16px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #2FC7FF;
+  color: black;
+  border: none;
+  border-radius: 500px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 24px 0;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.forgot-password a {
+  color: white;
+  text-decoration: underline;
+}
+
+.signup-prompt {
+  text-align: center;
+  color: #727272;
+}
+
+.signup-prompt a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Sign Ups */
+.signup-link-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 5px;
+}
+
+.signup-link-button:hover {
+  text-decoration: underline;
+}
+
+.signup-container {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.login-container h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 14px;
+  background-color: #121212;
+  border: 1px solid #282828;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #2FC7FF;
+  border: none;
+  border-radius: 500px;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.signup-button:hover {
+  transform: scale(1.02);
+  background-color: #2FC7FF;
+}

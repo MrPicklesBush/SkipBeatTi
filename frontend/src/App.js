@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 import Artists from "./components/Artists";
 import Albums from "./components/Albums";
 import Profile from "./components/Profile";
@@ -7,6 +7,8 @@ import Homepage from "./components/HomePage";
 import SongPage from "./components/SongPage";
 import Search from "./components/Search";
 import Playlists from "./components/Playlists";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/artists?artistId=1">Artists</Link>
+              <Link to="/homepage">Homepage</Link>
             </li>
             <li>
               <Link to="/albums">Albums</Link>
@@ -23,17 +25,14 @@ function App() {
             <li>
               <Link to="/profile">Profile</Link>
             </li>
-            <li>
-              <Link to="/homepage">Homepage</Link>
-            </li>
-            <li>
-              <Link to="/song">Song</Link>
-            </li>
             {/* <li>
               <Link to="/search">Search</Link>
             </li>  */}
             <li>
               <Link to="/playlists">Playlists</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
         </nav>
@@ -49,6 +48,10 @@ function App() {
           <Route path="/song/:songName" element={<SongPage />} />
           <Route path="/search" element={<Search />} />
           <Route path="/playlists" element={<Playlists />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
         </Routes>
       </div>
     </Router>
