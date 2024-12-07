@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 import Artists from "./components/Artists";
 import Albums from "./components/Albums";
 import Profile from "./components/Profile";
@@ -50,6 +50,8 @@ function App() {
           <Route path="/playlists" element={<Playlists />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
         </Routes>
       </div>
     </Router>

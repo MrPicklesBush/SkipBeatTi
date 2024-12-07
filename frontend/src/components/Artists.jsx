@@ -67,40 +67,6 @@ function Artists() {
   const aboutText =
     "As a member of BLACKPINK, one of the best-selling girl groups of all time, ROSÉ has shattered records, performed on the most heralded stages, and amassed millions of fans around the world.";
 
-  /* const playlists = [
-    {
-      title: "number one girl",
-      type: "Latest Release • Single",
-      image: "/path/to/image1.jpg",
-    },
-    {
-      title: "APT.",
-      type: "2024 • Single",
-      image: "/path/to/image2.jpg",
-    },
-    {
-      title: "R",
-      type: "2021 • Single",
-      image: "/path/to/image3.jpg",
-    },
-    {
-      title: "ROSÉ Radio",
-      type: "With JENNIE, LISA, BLACKPINK and more",
-      image: "/path/to/image4.jpg",
-    },
-    {
-      title: "Today's Top Hits",
-      type: "The hottest 50. Cover: Kendrick Lamar",
-      image: "/path/to/image5.jpg",
-    },
-    {
-      title: "Hot Hits USA",
-      type: "The hottest tracks in the United States",
-      image: "/path/to/image6.jpg",
-    },
-  ];
-*/
-
   return (
     <div className="artists-container">
       <div className="artist-header">
