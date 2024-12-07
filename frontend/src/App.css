@@ -626,3 +626,70 @@ nav a:hover {
   color: white;
   text-decoration: underline;
 }
+
+/* Sign Ups */
+.signup-link-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 5px;
+}
+
+.signup-link-button:hover {
+  text-decoration: underline;
+}
+
+.signup-container {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.login-container h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 14px;
+  background-color: #121212;
+  border: 1px solid #282828;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+}
+
+.signup-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #2FC7FF;
+  border: none;
+  border-radius: 500px;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.signup-button:hover {
+  transform: scale(1.02);
+  background-color: #2FC7FF;
+}

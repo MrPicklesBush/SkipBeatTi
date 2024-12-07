@@ -4,20 +4,13 @@ import mysql from "mysql"
 import path from "path"
 import { join } from 'path';
 
-// import albumRoutes from "./routes/album.route.js"
-// import playlistRoutes from "./routes/playlist.route.js"
 
 dotenv.config();
 
 const app = express();
-// app. use(express.static(path.join(__dirname, 'build')))
 app.use(express.static(join(import.meta.dirname, 'build')));
 app. use(express.json())
-// const PORT = process.env.PORT;
 const PORT = 5004;
-
-// app.use("/api/albums", albumRoutes);
-// app.use("/api/playlists", playlistRoutes)
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -26,7 +19,6 @@ const db = mysql.createConnection({
     database: "SkipBeatTi"
 })
 
-//const db = null;
 
 const playlists = [
     {
@@ -134,18 +126,35 @@ app.get('/artist_info', (req, res) => {
 
 });
 
-// Handling login
+
+// SIGNUP - ADD NEW USER
+app.post('/add_user', (req, res) => {
+  console.log("server is processing signup reqeust " +  
+    req.body.first_name + " " + req.body.last_name + " " +req.body.email + " " +req.body.password);
+  const sql = "INSERT INTO `user` (first_name, last_name, email, password) VALUES (?,?,?,?)"
+  const values = [
+      req.body.first_name,
+      req.body.last_name,
+      req.body.email,
+      req.body.password
+  ]
+  db.query(sql, values, (err, result) => {
+      if (err) return res.json({ message: "error ADD user" + err })
+      return res.json({ success: "new user added" })
+  })
+})
+
+
+// LOGIN USER
 app.post('/login', (req, res) => {
   console.log("server is processing login request");
   const { email, password } = req.body;
   
   if (db !== null && db !== undefined) {
-      console.log("db instance is ok; checking credentials");
       const query = 'SELECT user_id FROM User WHERE email = ? AND password = ?';
       
       db.query(query, [email, password], (error, results) => {
           if (error) {
-              console.log("db.query error: " + error);
               return res.status(500).json({ error: 'Database query failed' });
           }
           
@@ -154,7 +163,6 @@ app.post('/login', (req, res) => {
               return res.status(401).json({ error: 'Invalid email or password' });
           }
           
-          console.log("Login successful");
           res.json({ 
               message: 'Login successful',
               user: {

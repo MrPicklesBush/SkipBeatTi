@@ -8,6 +8,7 @@ import SongPage from "./components/SongPage";
 import Search from "./components/Search";
 import Playlists from "./components/Playlists";
 import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
@@ -16,19 +17,13 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/artists?artistId=1">Artists</Link>
+              <Link to="/homepage">Homepage</Link>
             </li>
             <li>
               <Link to="/albums">Albums</Link>
             </li>
             <li>
               <Link to="/profile">Profile</Link>
-            </li>
-            <li>
-              <Link to="/homepage">Homepage</Link>
-            </li>
-            <li>
-              <Link to="/song">Song</Link>
             </li>
             {/* <li>
               <Link to="/search">Search</Link>
@@ -54,6 +49,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/playlists" element={<Playlists />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </Router>
