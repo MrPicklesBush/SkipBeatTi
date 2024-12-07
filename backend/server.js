@@ -55,12 +55,12 @@ app.post('/login', (req, res) => {
     db.query(sql, values, (err, result) => {
         console.log(result)
         if (err) return res.json({ message: "error LOGIN user " + err })
-        return res.json({ success: "user logged in" })
+            return res.json({ success: "user logged in" })
     })
 })
 
 // EDIT USER PROFILE 
-app.put('/edit_user', (req, res) => {
+app.put('/edit_user/:id', (req, res) => {
     const sql = "UPDATE `user` SET `first_name`=?, `last_name`=?, `email`=?, `password`=? WHERE user_id=?";
     const values = [
         req.body.first_name,
@@ -71,6 +71,7 @@ app.put('/edit_user', (req, res) => {
     db.query(sql, values, (err, result) => {
         // res.send(result)
         if (err) return res.json({ message: "error EDIT a user" + err })
+        console.log("EDITING USER PROFILE "+result)
         return res.json({ success: "user updated" })
     })
 })
@@ -81,6 +82,7 @@ app.get('/get_user/:id', (req, res) => {
     const sql = "SELECT * FROM User WHERE `user_id` = ?"
     db.query(sql, [id], (err, result) => {
         if (err) return res.json({ message: "error GET a user" + err })
+        console.log("GETTING USER "+result)
         return res.json(result)
     })
 })
