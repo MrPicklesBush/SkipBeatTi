@@ -66,7 +66,7 @@ app.listen(PORT, () => {
     console.log("Server is running on port " + PORT)
 })
 
-// Grab list of Playlist
+// Grab list of Playlist 
 app.get('/artist_playlists', (req, res) => {
     console.log("server is getting playlists get");
     if (db !== null && db !== undefined) {
@@ -134,5 +134,36 @@ app.get('/artist_info', (req, res) => {
 
 });
 
-  // List of songs for a playlist 
+// Handling login
+app.post('/login', (req, res) => {
+  console.log("server is processing login request");
+  const { email, password } = req.body;
   
+  if (db !== null && db !== undefined) {
+      console.log("db instance is ok; checking credentials");
+      const query = 'SELECT user_id FROM User WHERE email = ? AND password = ?';
+      
+      db.query(query, [email, password], (error, results) => {
+          if (error) {
+              console.log("db.query error: " + error);
+              return res.status(500).json({ error: 'Database query failed' });
+          }
+          
+          if (results.length === 0) {
+              console.log("Invalid credentials");
+              return res.status(401).json({ error: 'Invalid email or password' });
+          }
+          
+          console.log("Login successful");
+          res.json({ 
+              message: 'Login successful',
+              user: {
+                  id: results[0].id,
+              }
+          });
+      });
+  } else {
+      console.log("db instance is NOT created");
+      res.status(500).json({ error: 'Database connection not available' });
+  }
+});
