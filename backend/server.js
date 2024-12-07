@@ -155,10 +155,42 @@ app.get('/get_song_comments/:id', (req, res) => {
 })
 
 // SEARCH FOR SONG BY TITLE
+app.get('/get_song_title/:songSearch', (req, res) => {
+    const name = "%"+req.params.songSearch+"%"
+    console.log("backend" + [name, artist,album])
+    const sql = "select s.song_id,s.song_name,a.album_name,ar.artist_name from album a, artist ar, song s where a.album_name LIKE ? AND ar.artist_name LIKE ? AND s.song_name LIKE ? AND a.artist_id = ar.artist_id AND a.album_id=s.album_id;"
+    db.query(sql, [name, artist,album], (err, result) => {
+        if (err) return res.json({ message: "error GET song rating" + err })
+        console.log(result)
+        return res.json(result)
+    })
+})
 
 // SEARCH FOR SONG BY ARTIST
+app.get('/get_song_title_artist_album/:artistSearch/:songSearch', (req, res) => {
+    const name = "%"+req.params.songSearch+"%"
+    const artist = "%"+req.params.artistSearch+"%"
+    console.log("backend" + [name, artist,album])
+    const sql = "select s.song_id,s.song_name,a.album_name,ar.artist_name from album a, artist ar, song s where a.album_name LIKE ? AND ar.artist_name LIKE ? AND s.song_name LIKE ? AND a.artist_id = ar.artist_id AND a.album_id=s.album_id;"
+    db.query(sql, [name, artist,album], (err, result) => {
+        if (err) return res.json({ message: "error GET song rating" + err })
+        console.log(result)
+        return res.json(result)
+    })
+})
 
 // SEARCH FOR SONG BY ALBUM
+app.get('/get_song_title_artist_album/:albumSearch//:songSearch', (req, res) => {
+    const name = "%"+req.params.songSearch+"%"
+    const album = "%"+req.params.albumSearch+"%"
+    console.log("backend" + [name, artist,album])
+    const sql = "select s.song_id,s.song_name,a.album_name,ar.artist_name from album a, artist ar, song s where a.album_name LIKE ? AND ar.artist_name LIKE ? AND s.song_name LIKE ? AND a.artist_id = ar.artist_id AND a.album_id=s.album_id;"
+    db.query(sql, [name, artist,album], (err, result) => {
+        if (err) return res.json({ message: "error GET song rating" + err })
+        console.log(result)
+        return res.json(result)
+    })
+})
 
 // SEARCH FOR SONG BY TITLE, ARTIST, ALBUM
 app.get('/get_song_title_artist_album/:albumSearch/:artistSearch/:songSearch', (req, res) => {
